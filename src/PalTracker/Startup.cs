@@ -26,7 +26,7 @@ namespace PalTracker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            
+
             services.AddSingleton(sp => new WelcomeMessage(
                Configuration.GetValue<string>("WELCOME_MESSAGE", "WELCOME_MESSAGE not configured.")
             ));
@@ -37,6 +37,8 @@ namespace PalTracker
                Configuration.GetValue<string>("CF_INSTANCE_INDEX", "CF_INSTANCE_INDEX no value"),
                Configuration.GetValue<string>("CF_INSTANCE_ADDR", "CF_INSTANCE_ADDR no value")
            ));
+
+           services.AddSingleton<ITimeEntryRepository, InMemoryTimeEntryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
