@@ -5,7 +5,7 @@ applications:
   routes:
   - route: pal-tracker-mas-digi-review.apps.evans.pal.pivotal.io
   env:
-    WELCOME_MESSAGE: Hello from review environment of Cloud Foundry
+    WELCOME_MESSAGE: Hello from the review environment
 
 
   

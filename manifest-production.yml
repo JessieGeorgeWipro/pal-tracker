@@ -5,7 +5,7 @@ applications:
   routes:
   - route: pal-tracker-mas-proddigi.apps.evans.pal.pivotal.io
   env:
-    WELCOME_MESSAGE: Hello from production env of Cloud Foundry
+    WELCOME_MESSAGE: Hello from the production environment
 
 
   
