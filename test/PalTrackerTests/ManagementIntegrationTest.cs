@@ -13,8 +13,8 @@ namespace PalTrackerTests
 
         public ManagementIntegrationTest()
         {
-            Environment.SetEnvironmentVariable("MYSQL__CLIENT__CONNECTIONSTRING", DbTestSupport.TestDbConnectionString);
-            DbTestSupport.ExecuteSql("TRUNCATE TABLE time_entries");
+         //   Environment.SetEnvironmentVariable("MYSQL__CLIENT__CONNECTIONSTRING", DbTestSupport.TestDbConnectionString);
+          //  DbTestSupport.ExecuteSql("TRUNCATE TABLE time_entries");
             _testClient = IntegrationTestServer.Start().CreateClient();
         }
 

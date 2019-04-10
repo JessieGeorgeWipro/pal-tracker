@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Steeltoe.Management.CloudFoundry;
+using Steeltoe.Management.Endpoint.CloudFoundry;
+using Steeltoe.Common.HealthChecks;
+using Steeltoe.Management.Endpoint.Info;
 
 namespace PalTracker
 {
@@ -39,6 +43,14 @@ namespace PalTracker
            ));
 
            services.AddSingleton<ITimeEntryRepository, InMemoryTimeEntryRepository>();
+
+           services.AddCloudFoundryActuators(Configuration);
+
+           services.AddScoped<IHealthContributor, TimeEntryHealthContributor>();
+
+           services.AddSingleton<IOperationCounter<TimeEntry>, OperationCounter<TimeEntry>>();
+
+           services.AddSingleton<IInfoContributor, TimeEntryInfoContributor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +67,7 @@ namespace PalTracker
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCloudFoundryActuators();
         }
     }
 }
